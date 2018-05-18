@@ -457,7 +457,9 @@ export default class ImageGallery extends React.Component {
 
   _handleKeyDown = (event) => {
     const LEFT_ARROW = 37;
+    const UP_ARROW = 38;
     const RIGHT_ARROW = 39;
+    const DOWN_ARROW = 40;
     const ESC_KEY = 27;
     const key = parseInt(event.keyCode || event.which || 0);
 
@@ -468,6 +470,16 @@ export default class ImageGallery extends React.Component {
         }
         break;
       case RIGHT_ARROW:
+        if (this._canSlideRight() && !this._intervalId) {
+          this._slideRight();
+        }
+        break;
+      case UP_ARROW:
+        if (this._canSlideLeft() && !this._intervalId) {
+          this._slideLeft();
+        }
+        break;
+      case DOWN_ARROW:
         if (this._canSlideRight() && !this._intervalId) {
           this._slideRight();
         }
